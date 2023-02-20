@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-  devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+
+  root to: "homes#top"
 
   resources :address, only: [:index, :edit, :create, :update, :destroy]
   resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]

@@ -6,14 +6,17 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-
-  resources :address, only: [:index, :edit, :create, :update, :destroy]
-  resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
-  resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-  resources :customers, only: [:show, :edit, :update, :unsubscribe]
-  resources :items, only: [:index, :show]
-  resources :homes, only: [:top, :about]
-
+  scope module: :public do
+    root to: "homes#top"
+    get 'homes/about' => 'homes#about'
+    
+    resources :address, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :customers, only: [:show, :edit, :update, :unsubscribe]
+    resources :items, only: [:index, :show]
+    resources :homes, only: [:top, :about]
+  end
 
 
 

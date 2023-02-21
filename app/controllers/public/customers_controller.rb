@@ -16,17 +16,6 @@ class Public::CustomersController < ApplicationController
   def unsubscribe
   end
 
-  def withdrawal
-    # @customer = Customer.find(current_user.id)
-    #現在ログインしているユーザーを@userに格納
-    # @customer.update(is_active: "Invalid")
-    #updateで登録情報をInvalidに変更
-    # reset_session
-    #sessionIDのresetを行う
-    # redirect_to root_path
-    #指定されたrootへのpath
-  end
-
   private
 
   def customer_params

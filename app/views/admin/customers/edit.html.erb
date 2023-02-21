@@ -38,10 +38,10 @@
     <%= f.text_field :phone_number, placeholder: "00000000000", maxlength: 13 %>
   </div>
 
-  <div class="form-group">
-    <%= f.label "会員ステータス" %>
-    <%= f.select :is_deleted, {'有効': true, '退会': false} %>
-  </div>
+  <!--<div class="form-group">-->
+    <%#= f.label "会員ステータス" %>
+    <%#= f.select :is_deleted, {'有効': true, '退会': false} %>
+  <!--</div>-->
 
   <div class="actions">
     <%= f.submit "変更内容を保存" %>

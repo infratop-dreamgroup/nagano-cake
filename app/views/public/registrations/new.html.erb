@@ -1,7 +1,7 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h2>新規会員登録</h2>
 
-<%= form_with model: @customer, url: customers_information_path, method: :patch, local: true do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="field">
     名前　　　　　　　　　　　　
@@ -39,9 +39,22 @@
     <%= f.text_field :phone_number, placeholder: "00000000000", maxlength: 15 %>
   </div>
 
+  <div class="field">
+    <%= f.label "パスワード" %>
+    <% if @minimum_password_length %>
+    (<%= @minimum_password_length %>文字以上)　　　　　
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "パスワード(確認用)" %>　　　　　　　
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "変更内容を保存" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 
-  <%= link_to "退会する", unsubscribe_path %>
+<%= render "public/shared/links" %>

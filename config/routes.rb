@@ -10,10 +10,14 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get '/about' => 'homes#about'
 
-    resources :address, only: [:index, :edit, :create, :update, :destroy]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-    resources :customers, only: [:show, :edit, :update, :unsubscribe]
+    get "/customers/mypage" => "customers#show"
+    get "/customers/information/edit" => "customers#edit"
+    patch "/customers/information" => "customers#update"
+    get "unsubscribe" => "customers#unsubscribe"
+    patch "/customers/withdrawal" => "customers#withdrawal"
     resources :items, only: [:index, :show]
     resources :homes, only: [:top, :about]
   end

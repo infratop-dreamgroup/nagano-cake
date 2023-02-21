@@ -1,35 +1,58 @@
-<p>注文履歴詳細</p>
+<div class="container">
+	<div class="row">
+  <!--コメントアウトしている分はユーザー側ができてから対応-->
+　　<p class="bg-secondary h-25 col-lg-2">　　注文履歴詳細</p>
+　　<br>
 
-<table>
-  <%= @orders.each do |order| %>
-  <tr><td>購入者</td><td><%= customer.name %></td></tr>
-  <tr><td>注文日</td><td></td></tr>
-  <tr><td>配送先</td><td><%= customer.adress %></td></tr>
-  <tr><td>支払方法</td><td></td></tr>
-  <tr><td>注文ステータス</td>
-  <td><%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-            <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
-            <%= f.submit "更新" , class: "btn btn-outline-success" %>
-          <% end %></td></tr>
-</table>
-<%end%>
+<div class="container-fluid">
+　<table>
+  <%#= @orders.each do |order| %>
+  <tr><td><b>購入者</b></td><td>山田花子<%#= order.name %></td></tr>
+  <tr><td><b>注文日</b></td><td>yyyymmdd</td></tr>
+  <tr><td><b>配送先</b></td><td>奈良県<%#= order.adress %></td></tr>
+  <tr><td><b>支払方法</b></td><td>コンビニ</td></tr>
+  <tr><td><b>注文ステータス</b></td>
+  <td> <%# if @order.order_status == 1 %>
+          <%#= form.select :production_status == 1, class: "production_status-select" %>
+        <%# else %>
+          <%#= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+            <%#= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
+            <%#= f.submit "更新" , class: "btn btn-outline-success" %>
+          <%# end %>
+        <%# end %>
+          </td></tr>
+  </table>
+ </div>
 
+<div class="col-md-8 offset-md-0">
 <table class='table table-hover table-inverse'>
-    <thead>
+  <%# @ordered_items.each do |ordered_item| %>
+    <thead class="bg-secondary">
       <tr> <th>
-      <td>購入日時</td>
-      <td>購入者</td>
-      <td>注文個数</td>
-      <td>注文ステータス</td>
+      <td><b>商品名</b></td>
+      <td><b>単価</b></td>
+      <td><b>注文個数</b></td>
+      <td><b>注文ステータス</b></td>
       </th></tr>
    </thead>
     <tbody>
        <tr>
          <td></td>
-       <td> 1/1</td>
-       <td> 田中太郎</td>
-       <td> 1</td>
-       <td> 1</td>
+      <td>チョコケーキ<%#= order_item.name %></td>
+       <td> 1580円<%#= ordered_item.item.add_tax_price %></td>
+       <td>2個<%#= ordered_item.item.add_tax_price * ordered_item.quantity %></td>
+       <%#= form_with model: ordered_item, url: admin_order_detail_path, method: :patch, local: true do |f| %>
+              <td>ステータス<%#= f.select :production_status, Ordereditem.production_statuses.keys, class: "production_status-select" %></td>
+              <td><%#= f.submit "更新", class: "btn btn-outline-success" %></td>
+
        </tr>
     </tbody>
 </table>
+</div>
+
+<table>
+  <tr><td><b>商品合計</b></td><td>何円<%#= order_item.name %></td></tr>
+  <tr><td><b>注文日</b></td><td>yyyymmdd</td></tr>
+</table>
+</div>
+</div>

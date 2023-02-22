@@ -1,2 +1,27 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container mt-5">
+
+  <div class="row">
+    <div class="col-5 mt-3">
+      <%= image_tag @item.image, size: "380x300" %>
+    </div>
+
+    <div class="col-7 mt-3">
+      <div style="pb-5">
+        <%= @item.name%>
+      </div>
+
+      <div style="pb-5">
+        <%= @item.introduction %>
+      </div>
+
+      <div style="pb-5">
+        ￥<%= (@item.price*1.1).floor.to_s(:delimited) %>(税込)
+      </div>
+
+      <div class="ml-5 mt-4">
+      <%= link_to "編集する", edit_admin_item_path(@item),class:"btn btn-success mx-auto" %>
+      </div>
+
+    </div>
+  </div>
+</div>

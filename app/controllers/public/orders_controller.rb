@@ -10,23 +10,22 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if params[:order][:address_option] == "0"
-        @order.shipping_post_code = current_customer.post_code
-        @order.shipping_address = current_customer.address
-        @order.shipping_name = current_customer.last_name + current_customer.first_name
+        @order.post_code = current_customer.post_code
+        @order.address = current_customer.address
+        @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1"
-        ship = Address.find(params[:order][:member_id])
-        @order.shipping_post_code = ship.post_code
-        @order.shipping_address = ship.address
-        @order.shipping_name = ship.name
+        ship = Address.find(params[:order][:customer_id])
+        @order.post_code = ship.post_code
+        @order.address = ship.address
+        @order.name = ship.name
     elsif params[:order][:address_option] = "2"
-        @order.shipping_post_code = params[:order][:shipping_post_code]
-        @order.shipping_address = params[:order][:shipping_address]
-        @order.shipping_name = params[:order][:shipping_name]
+        @order.post_code = params[:order][:post_code]
+        @order.address = params[:order][:address]
+        @order.name = params[:order][:name]
     else
          render 'new'
     end
   end
-end
 
   def complete
   end
@@ -42,5 +41,6 @@ end
 
   private
     def order_params
-        params.require(:order).permit(:postage, :payment_method, :shipping_name, :shipping_address, :shipping_post_code ,:member_id,:total_payment,:status)
+        params.require(:order).permit(:postage, :payment_method, :name, :address, :post_code ,:customer_id,:total_payment,:order_status)
     end
+end

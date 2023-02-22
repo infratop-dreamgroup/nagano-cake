@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show] do
+      collection do
+        post "confirm"
+      end
+    end
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     get "/customers/mypage" => "customers#show"
     get "/customers/information/edit" => "customers#edit"

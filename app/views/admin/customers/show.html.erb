@@ -16,4 +16,5 @@
 
 <p>会員ステータス　<%= @customer.is_deleted ? '退会' : '有効' %></p>
 
-<%= link_to "編集する", edit_admin_customer_path(@customer) %>
+<%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
+<%= link_to "注文履歴一覧を見る(仮)", admin_root_path, class: "btn btn-primary" %>

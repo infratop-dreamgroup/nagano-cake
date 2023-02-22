@@ -1,28 +1,33 @@
+<div class="container my-5">
 <div class=“row”>
   <h2>ログイン</h2>
   <%= flash[:notice] %>
+  <%= render "public/shared/error_messages", resource: resource %>
   <p>会員の方はこちらからログイン</p>
   <table>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <tbody>
-    <tr class="field">
-      <td><%= f.label "メールアドレス" %></td>
-      <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %></td>
-    </tr>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <tbody>
+        <tr class="field">
+          <td><%= f.label "メールアドレス" %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %></td>
+        </tr>
   
-    <tr class="field">
-      <td><%= f.label "パスワード" %></td>
-      <td><%= f.password_field :password, autocomplete: "current-password", size: "40" %></td>
-    </tr>
+        <tr class="field">
+          <td><%= f.label "パスワード" %></td>
+          <td><%= f.password_field :password, autocomplete: "current-password", size: "40" %></td>
+        </tr>
   
-    <tr class="actions">
-      <td><%= f.submit "ログイン" %></td>
-    </tr>
-  <% end %>
-  </tbody>
+        <tr class="actions">
+          <td></td>
+          <td><%= f.submit "ログイン", class: "btn btn-primary" %></td>
+        </tr>
+      </tbody>
+    <% end %>
   </table>
+
   <br><br>
-  
-  
+
+
   <%= render "public/shared/links" %>
+</div>
 </div>

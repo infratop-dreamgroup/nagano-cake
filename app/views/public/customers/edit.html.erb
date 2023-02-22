@@ -1,44 +1,46 @@
-<h1>会員情報編集</h1>
-<div class="container">
+<div class="container my-5">
   <div class="row no-gutters">
-    <%= render 'layouts/errors', obj: @customer %>
-    <%= form_with model: @customer, url: customers_information_path, method: :patch, local: true do |f| %>
-      <table class="col-md5 my-5"><br>
-        <tbody>
-          <tr>
-            <th><%= f.label "名前" %></th>
-            <th><%= f.label "(姓)　" %><%= f.text_field :last_name, placeholder: "令和" %><%= f.label "(名)　" %><%= f.text_field :first_name, placeholder: "道子" %></th>
-          </tr>
-          <tr>
-            <th><%= f.label "フリガナ" %></th>
-            <th><%= f.label "(セイ)" %><%= f.text_field :last_name_kana, placeholder: "レイワ" %><%= f.label "(メイ)" %><%= f.text_field :first_name_kana, placeholder: "ミチコ" %></th>
-          </tr>
-          <tr>
-            <th><%= f.label "メールアドレス" %></th>
-            <th>　　　<%= f.email_field :email, autocomplete: "email", placeholder: "example@example.com" %></th>
-          </tr>
-          <tr>
-            <th><%= f.label "郵便番号(ハイフンなし)" %></th>
-            <th>　　　<%= f.text_field :post_code, placeholder: "0000000", maxlength: 7 %></th>
-          </tr>
-          <tr>
-            <th><%= f.label "住所" %></th>
-            <th>　　　<%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", size: "60" %></th>
-          </tr>
-          <tr>
-            <th><%= f.label "電話番号(ハイフンなし)" %></th>
-            <th>　　　<%= f.text_field :phone_number, placeholder: "00000000000", maxlength: 11 %></th>
-          </tr>
-          <tr>
-            <th></th>
-            <th>　　　<%= f.submit "変更内容を保存", class: "btn btn-success" %>　　　　　<%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger" %></th>
-          </tr>
-          <tr>
-            <th></th>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
+      <div class="col-xs-12">
+        <h3><strong>会員情報編集</strong></h3>
+      <%= render 'layouts/errors', obj: @customer %>
+      <%= form_with model: @customer, url: customers_information_path, method: :patch, local: true do |f| %>
+        <div>
+          <div class="col-xs-12">
+            <%= f.label "氏名", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.text_field :last_name, class: "col-sm-3", style: "margin: 10px;", placeholder: "令和" %>
+            <%= f.text_field :first_name, class: "col-sm-3", style: "margin: 10px;", placeholder: "道子" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "フリガナ", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.text_field :last_name_kana, class: "col-sm-3", style: "margin: 10px;", placeholder: "レイワ" %>
+            <%= f.text_field :first_name_kana, class: "col-sm-3", style: "margin: 10px;", placeholder: "ミチコ" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "メールアドレス", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.email_field :email, autocomplete: "email", class: "col-sm-6", style: "margin: 10px;", placeholder: "example@example.com" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "郵便番号", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.text_field :post_code, class: "col-sm-2", style: "margin: 10px;", placeholder: "0000000" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "住所", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.text_field :address, class: "col-sm-8", style: "margin: 10px;", placeholder: "東京都渋谷区代々木神園町0-0" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "電話番号(ハイフンなし)", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.text_field :phone_number, class: "col-sm-3", style: "margin: 10px;", placeholder: "00000000000" %>
+          </div>
+        </div>
+  
+        <div>
+        <p>
+          <%= f.submit "編集内容を保存", class: "btn btn-success col-sm-3", style: "margin: 10px;" %>
+          <%= link_to " 退会する", customers_unsubscribe_path, class: "glyphicon glyphicon-tint btn btn-danger col-sm-3", style: "margin: 10px;" %>
+        </p>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 

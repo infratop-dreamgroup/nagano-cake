@@ -5,6 +5,6 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p>会員登録がお済みでない方</p>
+  <p class="h5">会員登録がお済みでない方</p>
   <%= link_to "こちら", new_registration_path(resource_name) %>　から新規登録を行ってください。<br />
 <% end %>

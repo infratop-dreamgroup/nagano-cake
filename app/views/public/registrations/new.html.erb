@@ -13,7 +13,7 @@
 
    <div class="field">
      フリガナ　　　　　　　　　
-    <%= f.label "(セイ)" %>
+    <%= f.label :last_name_kana, "(セイ)" %>
     <%= f.text_field :last_name_kana, placeholder: "レイワ" %>
     <%= f.label "(メイ)" %>
     <%= f.text_field :first_name_kana, placeholder: "ミチコ" %>
@@ -36,7 +36,7 @@
 
    <div class="field">
     <%= f.label "電話番号(ハイフンなし)" %>　　　　　
-    <%= f.text_field :phone_number, placeholder: "00000000000", maxlength: 15 %>
+    <%= f.text_field :phone_number, placeholder: "00000000000", maxlength: 11 %>
   </div>
 
   <div class="field">

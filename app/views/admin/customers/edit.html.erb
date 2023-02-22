@@ -1,5 +1,5 @@
 <h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h1>
-
+<%= render 'layouts/errors', obj: @customer %>
 <%= form_with model: @customer, url: admin_customer_path, method: :patch, local: true do |f| %>
 
   <div class="field">
@@ -35,13 +35,16 @@
 
    <div class="field">
     <%= f.label "電話番号(ハイフンなし)" %>
-    <%= f.text_field :phone_number, placeholder: "00000000000", maxlength: 13 %>
+    <%= f.text_field :phone_number, placeholder: "00000000000", maxlength: 11 %>
   </div>
 
-  <!--<div class="form-group">-->
-    <%#= f.label "会員ステータス" %>
-    <%#= f.select :is_deleted, {'有効': true, '退会': false} %>
-  <!--</div>-->
+  <div class="status">
+    会員ステータス
+      <%= f.radio_button :is_deleted, :false %>
+      <%= f.label :is_deleted, "有効" %>
+      <%= f.radio_button :is_deleted, :true %>
+      <%= f.label :is_deleted, "退会" %><br />
+  </div>
 
   <div class="actions">
     <%= f.submit "変更内容を保存" %>

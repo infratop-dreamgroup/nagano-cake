@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show] do
       collection do
         post "confirm"
+        get "complete"
       end
     end
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]

@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-  before_action :set_genres, only: [:index, :new, :show, :edit, :create,:update]
+
   def index
     @items = Item.all
   end
@@ -36,7 +36,4 @@ class Admin::ItemsController < ApplicationController
       params.require(:item).permit(:name, :introduction, :genre_id, :price, :is_active, :image)
     end
 
-    def set_genres
-      @genres = Genre.all
-    end
 end

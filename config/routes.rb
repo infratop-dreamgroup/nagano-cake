@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get "/customers/mypage" => "customers#show"
     get "/customers/information/edit" => "customers#edit"
     patch "/customers/information" => "customers#update"
-    get "unsubscribe" => "customers#unsubscribe"
+    get "customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdrawal" => "customers#withdrawal"
     resources :items, only: [:index, :show]
     resources :homes, only: [:top, :about]

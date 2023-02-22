@@ -52,16 +52,17 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_member.orders
+    @orders = current_customer.orders
   end
 
   def show
     @order = Order.find(params[:id])
-    @ordered_items = @order.ordered_items
+    @ordered_items = @order.order_details
+    @total = 0
   end
 
   private
     def order_params
-        params.require(:order).permit(:postage, :payment_method, :name, :address, :post_code ,:customer_id,:billing_amoun,:order_status)
+        params.require(:order).permit(:postage, :pay_type, :name, :address, :post_code,:customer_id,:billing_amount, :order_status)
     end
 end

@@ -9,11 +9,11 @@
             <%= form_with model: @order, url: "/orders/confirm", method: :post, local: true do |f| %>
                 <h5 class="font-weight-bold">支払い方法</h5>
                 <p class = "ml-4">
-                <%= f.radio_button :payment_method, Order.payment_methods.key(0),  checked: "checked" %>
-                <%= f.label :payment_method, "クレジットカード" %>
+                <%= f.radio_button :pay_type, Order.pay_types.key(0),  checked: "checked" %>
+                <%= f.label :pay_type, "クレジットカード" %>
                 <br>
-                <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-                <%= f.label :payment_method, "銀行振込" %>
+                <%= f.radio_button :pay_type, Order.pay_types.key(1) %>
+                <%= f.label :pay_type, "銀行振込" %>
                 </p>
                 <h5 class="font-weight-bold">お届け先</h5>
                  <p class = "ml-4">

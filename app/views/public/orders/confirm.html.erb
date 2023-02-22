@@ -21,13 +21,10 @@
                   <td><%= (cart_item.item.price*1.08).to_i %></td>
                   <td><%= cart_item.quantity %></td>
                   <td>
-                      <!--小計の計算-->
                       <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.08).to_i %>
-                      <!--小計を表示-->
                       <%= subtotal %>
                   </td>
               </tr>
-              <!--アイテムごとに合計金額に加算する-->
               <% total += (cart_item.item.price*cart_item.quantity)*1.08 %>
             <% end %>
           </table>
@@ -46,7 +43,7 @@
     <div class="row">
         <div class='col-11 offset-1'>
             <table class="table table-borderless">
-                <tr><th class="col-1">支払い方法</th><td class="col-10"><%= @order.payment_method_i18n  %></td></tr>
+                <tr><th class="col-1">支払い方法</th><td class="col-10"><%= @order.pay_type_i18n %></td></tr>
                 <tr><th class="col-1">お届け先</th><td class="col-10">
                 <%= @order.post_code %>
                 <%= @order.address %>
@@ -61,7 +58,7 @@
             <%= f.hidden_field :customer_id %>
             <%= f.hidden_field :postage %>
             <%= f.hidden_field :billing_amount %>
-            <%= f.hidden_field :payment_method %>
+            <%= f.hidden_field :pay_type %>
             <%= f.hidden_field :name %>
             <%= f.hidden_field :address %>
             <%= f.hidden_field :post_code %>

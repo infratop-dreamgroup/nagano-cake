@@ -1,29 +1,30 @@
 <div class="container">
  <div class="row">
 
-　<h5 class="h-25 col-lg-2.5 mt-5 ml-5 mb-lg-5", style="background-color:#e0e0e0">
+　<h5 class=" col-sm-2 col-lg-2.5 m-5 text-center", style="background-color:#e0e0e0">
   配送先編集</h5>
 
 <div class="container">
  <div class="row">
 
-<table>
+<table class="table table-borderless " >
 	     <%= form_with model: @address , url: '/addresses', method: :patch do |f| %>
 		<tr>
-			<th>郵便番号(ハイフンなし)</th>
+			<th scope="col" style="width: 20%">郵便番号(ハイフンなし)</th>
 			<td><%= f.text_field :post_code , placeholder:"郵便番号" %></td>
 		</tr>
 		<tr>
 			<th>住所</th>
-			<td><%= f.text_field :address , placeholder:"東京都渋谷区代々木神園町0-0" %></td>
+			<td><%= f.text_field :address , placeholder:"東京都渋谷区代々木神園町0-0" , size: 50 %></td>
 		</tr>
 		<tr>
 			<th>宛名</th>
 			<td><%= f.text_field :name , placeholder:"令和道子" %>
-　　　　　<%= f.submit '変更内容を保存' , class: 'ml-6 btn btn-success w-20' %></td>
+　 　<%= f.submit '変更内容を保存' , class: 'ml-6 btn btn-success w-20' %></td>
 		</tr>
 　　　　　<%end%>
 　　</table>
-　　
+
+
 　　</div>
 　　　</div>

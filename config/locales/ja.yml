@@ -11,6 +11,13 @@ ja:
 
   activerecord:
     attributes:
+      item:
+        image: "画僧"
+        name: "商品名"
+        introduction: "商品説明"
+        genre_id: "ジャンル"
+        price: "税抜価格"
+        genre: "ジャンル"
       customer:
         last_name: "姓"
         first_name: "名"

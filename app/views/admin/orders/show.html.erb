@@ -1,2 +1,58 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+	<div class="row">
+  <!--コメントアウトしている分はユーザー側ができてから対応-->
+　　<p class="bg-secondary h-25 col-lg-2">　　注文履歴詳細</p>
+　　<br>
+
+<div class="container-fluid">
+　<table>
+  <%#= @orders.each do |order| %>
+  <tr><td><b>購入者</b></td><td>山田花子<%#= order.name %></td></tr>
+  <tr><td><b>注文日</b></td><td>yyyymmdd</td></tr>
+  <tr><td><b>配送先</b></td><td>奈良県<%#= order.adress %></td></tr>
+  <tr><td><b>支払方法</b></td><td>コンビニ</td></tr>
+  <tr><td><b>注文ステータス</b></td>
+  <td> <%# if @order.order_status == 1 %>
+          <%#= form.select :production_status == 1, class: "production_status-select" %>
+        <%# else %>
+          <%#= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+            <%#= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
+            <%#= f.submit "更新" , class: "btn btn-outline-success" %>
+          <%# end %>
+        <%# end %>
+          </td></tr>
+  </table>
+ </div>
+
+<div class="col-md-8 offset-md-0">
+<table class='table table-hover table-inverse'>
+  <%# @ordered_items.each do |ordered_item| %>
+    <thead class="bg-secondary">
+      <tr> <th>
+      <td><b>商品名</b></td>
+      <td><b>単価</b></td>
+      <td><b>注文個数</b></td>
+      <td><b>注文ステータス</b></td>
+      </th></tr>
+   </thead>
+    <tbody>
+       <tr>
+         <td></td>
+      <td>チョコケーキ<%#= order_item.name %></td>
+       <td> 1580円<%#= ordered_item.item.add_tax_price %></td>
+       <td>2個<%#= ordered_item.item.add_tax_price * ordered_item.quantity %></td>
+       <%#= form_with model: ordered_item, url: admin_order_detail_path, method: :patch, local: true do |f| %>
+              <td>ステータス<%#= f.select :production_status, Ordereditem.production_statuses.keys, class: "production_status-select" %></td>
+              <td><%#= f.submit "更新", class: "btn btn-outline-success" %></td>
+
+       </tr>
+    </tbody>
+</table>
+</div>
+
+<table>
+  <tr><td><b>商品合計</b></td><td>何円<%#= order_item.name %></td></tr>
+  <tr><td><b>注文日</b></td><td>yyyymmdd</td></tr>
+</table>
+</div>
+</div>

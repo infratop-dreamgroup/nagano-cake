@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     patch "/customers/information" => "customers#update"
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdrawal" => "customers#withdrawal"
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] 
     resources :homes, only: [:top, :about]
   end
 
@@ -40,7 +40,11 @@ Rails.application.routes.draw do
       end
     end
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update] do
+      collection do
+        get "search"
+      end
+    end
     resources :homes, only: [:top]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

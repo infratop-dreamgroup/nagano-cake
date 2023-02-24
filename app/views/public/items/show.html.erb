@@ -1,2 +1,35 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container mt-5">
+
+  <div class="row">
+    <div class="col-5 mt-3">
+      <%= image_tag @item.image, size: "380x300" %>
+    </div>
+
+    <div class="col-7 mt-3">
+      <h1>
+        <%= @item.name%>
+      </h1>
+      <br>
+      <h3>
+        <%= @item.introduction %>
+      </h3>
+      <br>
+      <h3>
+        ￥<%= (@item.price*1.1).floor.to_s(:delimited) %>(税込)
+      </h3>
+      <br>
+      <br>
+
+      <div class="ml-5 mt-4">
+      <%= form_with model: @cart_item do |f| %>
+          <% if customer_signed_in? %>
+        <%= f.select :quantity, *[1..10] %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit 'カートに入れる',class:"btn btn-success mx-auto"%>
+          <% end %>
+      <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

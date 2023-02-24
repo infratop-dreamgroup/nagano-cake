@@ -1,4 +1,5 @@
 <div class="container">
+  <%= flash[:notice] %>
   <div class="row">
     <div class="card my-4">
       <div class="card-body">
@@ -13,7 +14,7 @@
           </p>
       </div>
     </div>
-  
+
       <div class="col-11 my-1">
       <center>新着商品</center><br>
       <div class="card-content" style="display: flex;">
@@ -32,12 +33,9 @@
           </div>
         <% end %>
       </div>
-      
+
       <br><p style="text-align: right;"><%=link_to "すべての商品を見る ＞＞", items_path %></p>
-      
+
     </div>
   </div>
 </div>
-
-
-

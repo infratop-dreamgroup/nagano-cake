@@ -1,17 +1,11 @@
+
+
 class Admin::OrdersController < ApplicationController
   def show
-     @orders = Order.all
-     @order = Order.find(params[:id])
-     @item = Item.find(params[:id])
-     #@ordered_products = @order.ordered_products
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def update
-  end
-  
-   private
-
-  def order_params
-    params.require(:order).permit(:order_status)
   end
 end

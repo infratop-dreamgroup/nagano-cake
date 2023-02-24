@@ -3,6 +3,7 @@ class Admin::OrdersController < ApplicationController
      @orders = Order.all
      # @order= Order.find(params[:id])
      # @ordered_items = @order.ordered_items
+     @customer = Customer.order_details
   end
 
   def update

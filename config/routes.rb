@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
   scope module: :public do
-    root to: "homes#top"
+    root to: "items#top"
     get '/about' => 'homes#about'
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]

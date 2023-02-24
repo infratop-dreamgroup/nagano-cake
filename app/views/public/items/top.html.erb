@@ -1,0 +1,61 @@
+<!--<div class="container">-->
+<!--	<div class="row">-->
+<!--  <div class="my-3"><%#= image_tag "nctop.jpg",size: "1100x700" %></div>-->
+<!--<div class="container center-block w-50 border border-warning" style="background-color: #ffffe0;">-->
+<!--<p class="text-black-50">ようこそ、ながのCAKEへ！<br>-->
+<!--このサイトは、ケーキ販売のECサイトになります。<br>-->
+<!--会員ではない方も商品の閲覧はできますが、<br>-->
+<!--購入には会員登録が必要になります。</p>-->
+<!--</div>-->
+
+<!--<div class="card">-->
+<!--  <%#= image_tag "nctop.jpg",size: "1100x700" %>-->
+<!--  <div class="card-img-overlay">-->
+<!--    <p class="card-text text-danger">ようこそ、ながのCAKEへ！-->
+<!--このサイトは、ケーキ販売のECサイトになります。-->
+<!--会員ではない方も商品の閲覧はできますが-->
+<!--購入には会員登録が必要になります</p>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="container">
+  <div class="row">
+    <div class="card my-4">
+      <div class="card-body">
+        <p class="card-text">🍰 ようこそ、ながのCAKEへ！</p>
+      </div>
+      <%= image_tag "nctop.jpg",size: "1100x700" %>
+      <div class="card-body">
+        <p class="card-text">
+          このサイトは、ケーキ販売のECサイトになります。
+          会員ではない方も商品の閲覧はできますが、
+          購入には会員登録が必要になります。
+          </p>
+      </div>
+    </div>
+  
+  
+      <div class="col-11 my-1">
+      <center>新着商品</center><br>
+      <div class="card-content" style="display: flex;">
+        <% @items.last(4).reverse.each do |item| %>
+          <div class="card ml-3" style="width: 500px; height: 300px;">
+            <div class="card-body"><%= link_to item.name, item_path(item), class: "text-dark" %></div>
+            <div class="card-body">
+              <%= link_to item_path(item) do %>
+              <%= image_tag item.get_image, size: "200x150", class:"card" %>
+              <% end %>
+            </div>
+            <div class="card-body">
+              ¥ <%= item.price.to_s(:delimited) %> -<br>
+              <%= item.introduction %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <br><p style="text-align: right;"><%=link_to "すべての商品を見る ＞＞", items_path %></p>
+    </div>
+  </div>
+</div>
+
+
+

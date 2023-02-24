@@ -9,7 +9,7 @@
   </div>
 
   <div class="row">
-    <table class="table table-bordered cart-table">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <th class="col-4">商品名</th>
@@ -46,7 +46,7 @@
     <div class="col-4">
       <table class="table table-bordered cart-table">
         <tr>
-          <td>合計金額</td>
+          <th>合計金額</th>
           <td><%= @total.round.to_s(:delimited)%></td>
         </tr>
       </table>

@@ -19,9 +19,9 @@
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
+
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <% if current_page?(admin_customers_path) || (search_admin_customers_path) %>
+            <% if current_page?(admin_customers_path) %>
             <ul class="navbar-nav ml-auto">
               <%= search_form_for @q, url: search_admin_customers_path do |f| %>
                 <li>
@@ -74,6 +74,12 @@
           </div>
         </div>
       </nav>
+       <div class="text-right">
+      <%= form_tag search_admin_items_path, method: :get do %>
+  <%= text_field_tag :keyword, params[:keyword], placeholder: "キーワードを入力してください" %>
+  <%= submit_tag "検索" %>
+<% end %>
+    </div>
     </header>
     <main class="mb-auto">
     <%= yield %>

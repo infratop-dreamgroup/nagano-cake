@@ -33,6 +33,10 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
+  
+  def search
+   @itemss = Item.search_by_keyword(params[:keyword])
+  end
 
   private
   def item_params

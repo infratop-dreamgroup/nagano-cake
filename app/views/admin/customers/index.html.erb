@@ -2,17 +2,6 @@
   <div class="row no-gutters">
     <div class="col-xs-10 col-xs-offset-1">
       <h2>会員一覧</h2>
-      <%= search_form_for @q, url: search_admin_customers_path do |f| %>
-        <%= f.label :last_name_cont, '姓）で検索' %>
-        <%= f.search_field :last_name_cont %>
-        <%= f.label :first_name_cont, '名）で検索' %>
-        <%= f.search_field :first_name_cont %><br>
-        <%= f.label :last_name_kana_cont, 'ｾｲ）で検索' %>
-        <%= f.search_field :last_name_kana_cont %>
-        <%= f.label :first_name_kana_cont, 'ﾒｲ）で検索' %>
-        <%= f.search_field :first_name_kana_cont %>
-        <%= f.submit '検索' %>
-      <% end %>
       <table class="table">
         <thead>
           <tr>
@@ -26,9 +15,9 @@
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.id %></td>
-              <td>
+              <td class="text-dark">
               <%= link_to admin_customer_path(customer.id) do %>
-                <%= customer.last_name %><%= customer.first_name %>
+                <%= customer.full_name %>
               <% end %>
               </td>
               <td><%= customer.email %></td>

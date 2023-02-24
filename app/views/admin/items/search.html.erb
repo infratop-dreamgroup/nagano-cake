@@ -1,0 +1,13 @@
+  <div class="col-md-8">
+   <h1>検索結果</h1>
+
+  <% if @itemss.present? %>
+  <ul>
+    <% @itemss.each do |item| %>
+      <li><%= link_to item.name, item_path(item) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>該当する商品がありませんでした。</p>
+<% end %>
+  </div>

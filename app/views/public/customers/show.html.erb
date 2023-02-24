@@ -1,2 +1,57 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+<%= flash[:notice] %>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3><strong>マイページ</strong></h3>
+      <table class="table table-bordered">
+        <div class="col-xs-10" style="margin-top: 50px;">
+          <p>
+            <strong class="h4">登録情報</strong>
+            <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success" %>
+          </p>
+          <div class='col'>
+            <thead>
+              <tr class="table">
+                <th style="background-color:#f0f8ff;">氏名</th>
+                <td><%= @customer.last_name %><%= @customer.first_name %></td>
+              </tr>
+      
+              <tr class="table">
+                <th style="background-color:#f0f8ff;">カナ</th>
+                <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+              </tr>
+      
+              <tr class="table">
+                <th style="background-color:#f0f8ff;">郵便番号</th>
+                <td><%= @customer.post_code %></td>
+              </tr>
+      
+              <tr class="table">
+                <th style="background-color:#f0f8ff;">住所</th>
+                <td><%= @customer.address %></td>
+              </tr>
+      
+              <tr class="table">
+                <th style="background-color:#f0f8ff;">電話番号</th>
+                <td><%= @customer.phone_number %></td>
+              </tr>
+      
+              <tr class="table">
+                <th style="background-color:#f0f8ff;">メールアドレス</th>
+                <td><%= @customer.email%></td>
+              </tr>
+            <thead>
+          </div>
+        </div>
+      </table>
+      <p>
+      <strong>配送先　　</strong>
+      <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
+      </p>
+      <p>
+      <strong>注文履歴　</strong>
+      <th><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></th>
+      </p>
+    </div>
+  </div>
+</div>

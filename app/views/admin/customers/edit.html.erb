@@ -1,2 +1,53 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+
+
+<div class="container my-5">
+  <div class="row no-gutters">
+      <div class="col-xs-12">
+        <h3><strong><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</strong></h3>
+      <%= render 'layouts/errors', obj: @customer %>
+      <%= form_with model: @customer, url: admin_customer_path, method: :patch, local: true do |f| %>
+        <div>
+          <div class="col-xs-12">
+            <%= f.label "氏名", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.text_field :last_name, class: "col-sm-3", style: "margin: 10px;", placeholder: "令和" %>
+            <%= f.text_field :first_name, class: "col-sm-3", style: "margin: 10px;", placeholder: "道子" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "フリガナ", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.text_field :last_name_kana, class: "col-sm-3", style: "margin: 10px;", placeholder: "レイワ" %>
+            <%= f.text_field :first_name_kana, class: "col-sm-3", style: "margin: 10px;", placeholder: "ミチコ" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "メールアドレス", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.email_field :email, autocomplete: "email", class: "col-sm-6", style: "margin: 10px;", placeholder: "example@example.com" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "郵便番号(ハイフンなし)", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.text_field :post_code, class: "col-sm-2", style: "margin: 10px;", placeholder: "0000000" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "住所", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.text_field :address, class: "col-sm-8", style: "margin: 10px;", placeholder: "東京都渋谷区代々木神園町0-0" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "電話番号(ハイフンなし)", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.text_field :phone_number, class: "col-sm-3", style: "margin: 10px;", placeholder: "00000000000" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label "会員ステータス", class: "col-sm-3", style: "margin: 10px;" %>
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :is_deleted, "有効" %>
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会" %></p>
+          </div>
+        </div>
+  
+        <div>
+          <p>
+            <%= f.submit "編集内容を保存", class: "btn btn-success col-sm-3", style: "margin: 10px;" %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -20,13 +20,14 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <% if current_page?(admin_customers_path) || (search_admin_customers_path) %>
+            <% if current_page?(admin_customers_path) %>
             <ul class="navbar-nav ml-auto">
+              <li class="nav-item.active.justify-content-center.align-items-center">
               <%= search_form_for @q, url: search_admin_customers_path do |f| %>
-                <li>
                 <%= f.search_field :last_name_or_first_name_or_last_name_kana_or_first_name_kana_cont, placeholder: "姓 or 名 or セイ or メイ" %>
-                <%= f.submit '🔍', class: "btn-sm btn-outline-secondary" %></li>
+                <%= f.submit '🔍', class: "btn-sm btn-outline-secondary" %>
               <% end %>
+              </li>
             </ul>
             <% end %>
             <ul class="navbar-nav ml-auto">

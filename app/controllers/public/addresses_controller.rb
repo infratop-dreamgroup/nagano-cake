@@ -6,6 +6,7 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+    @address = Address.find(params[:id])
   end
 
   def create
@@ -15,13 +16,20 @@ class Public::AddressesController < ApplicationController
      @address.save
      flash[:success] = '配送先を登録しました'
      redirect_to "/addresses"
-   else
+    else
      flash[:danger] ='必要情報を入力してください／ハイフンは使用できません'
      redirect_to "/addresses"
+    end
   end
-end
 
   def update
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+       flash[:notice] = "Shipcity was successfully updated"
+    redirect_to addresses_path 
+    else
+     render "edit"
+    end
   end
 
   def destroy

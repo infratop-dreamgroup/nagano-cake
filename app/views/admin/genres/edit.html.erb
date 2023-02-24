@@ -1,0 +1,16 @@
+
+<div class="container">
+	<div class="row">
+
+<h5 class="d-inline-block col-lg-2.5 mt-5 ml-2 mb-lg-5" , style="background-color:#e0e0e0"><b>　ジャンル編集　</b></h5> 
+<div class="container">
+  <div class="row">
+    <div class="ml-5 w-25"><b>ジャンル名</b></div>
+ <%= form_with model: @genre , url: admin_genre_path(@genre.id), method: :patch do |f| %>
+<%= f.text_field :name %>
+<%= f.submit '変更を保存' , class: 'ml-5 btn btn-success w-20'%>
+<% end %>
+</div>
+</div>
+</div>
+</div>

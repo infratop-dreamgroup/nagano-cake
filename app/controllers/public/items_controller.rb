@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def top
-    @genres = Genre.all
+    #@genres = Genre.all
     @items = Item.all
   end
 

@@ -36,11 +36,11 @@
 					</tr>
 					<% @ordered_items.each do |order_item| %>
 					<tr>
-						<td><%= order_item.item.item_name %></td>
-						<td><%= order_item.items_tax_included_price %></td>
-						<td><%= order_item.number_of_items %></td>
-						<td><%= (order_item.items_tax_included_price*order_item.number_of_items) %>
-							<% @total += (order_item.items_tax_included_price*order_item.number_of_items) %>
+						<td><%= order_item.item.name %></td>
+						<td><%= order_item.total_price %></td>
+						<td><%= order_item.quantity %></td>
+						<td><%= (order_item.total_price*order_item.quantity) %>
+							<% @total += (order_item.total_price*order_item.quantity) %>
 						</td>
 					</tr>
 					<% end %>

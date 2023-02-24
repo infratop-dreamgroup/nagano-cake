@@ -14,11 +14,12 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <h3><a class="navbar-brand p-3" href="/"><img src="app/assets/images/nagano-cake.png" alt="nagano-cake"></a></h3>
+          <a class="navbar-brand p-3" href="/"><%= image_tag('logo.drawio.png') %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <% if current_page?(admin_customers_path) %>
             <ul class="navbar-nav ml-auto">
@@ -74,6 +75,12 @@
           </div>
         </div>
       </nav>
+       <div class="text-right">
+      <%= form_tag search_admin_items_path, method: :get do %>
+  <%= text_field_tag :keyword, params[:keyword], placeholder: "キーワードを入力してください" %>
+  <%= submit_tag "検索" %>
+<% end %>
+    </div>
     </header>
     <main class="mb-auto">
     <%= yield %>

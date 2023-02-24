@@ -7,6 +7,8 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
+  scope :search_by_keyword, -> (keyword) { where("name LIKE ?", "%#{keyword}%") }
+
   def get_image#画像取得メソッド(画像選択していない場合no_imageが表示される)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

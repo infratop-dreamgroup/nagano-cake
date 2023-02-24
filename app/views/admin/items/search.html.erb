@@ -4,7 +4,7 @@
   <% if @itemss.present? %>
   <ul>
     <% @itemss.each do |item| %>
-      <li><%= link_to item.name, items_path(item) %></li>
+      <li><%= link_to item.name, item_path(item) %></li>
     <% end %>
   </ul>
 <% else %>

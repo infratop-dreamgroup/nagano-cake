@@ -5,6 +5,8 @@ class Item < ApplicationRecord
   belongs_to :genre
 
   has_one_attached :image
+  
+  scope :search_by_keyword, -> (keyword) { where("name LIKE ?", "%#{keyword}%") }
 
   def get_image#画像取得メソッド(画像選択していない場合no_imageが表示される)
     unless image.attached?

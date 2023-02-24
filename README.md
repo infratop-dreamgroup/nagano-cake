@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
+# 今の流行りのながのCAKEのサイトの概要
+
+![ケーキのアイコン](https://user-images.githubusercontent.com/121922228/220863723-ba69d6a7-a54c-4cb8-b857-35c7b3b04b5e.jpg)
+

@@ -21,10 +21,15 @@
           </button>
           
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <%= form_tag  search_items_path, method: :get do %>
-           <%= text_field_tag :keyword, params[:keyword], placeholder: "Search" %>
-           <%= submit_tag "検索" %>
-          <% end %>
+            <% if current_page?(admin_customers_path) || (search_admin_customers_path) %>
+            <ul class="navbar-nav ml-auto">
+              <%= search_form_for @q, url: search_admin_customers_path do |f| %>
+                <li>
+                <%= f.search_field :last_name_or_first_name_or_last_name_kana_or_first_name_kana_cont, placeholder: "姓 or 名 or セイ or メイ" %>
+                <%= f.submit '🔍', class: "btn-sm btn-outline-secondary" %></li>
+              <% end %>
+            </ul>
+            <% end %>
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
             <li id="youkoso">ようこそ、<%= current_customer.last_name %>さん！</li>

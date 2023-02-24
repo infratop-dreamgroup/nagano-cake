@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
   has_many :orders, through: :order_details, dependent: :destroy
   has_many :order_details, dependent: :destroy
-  has_many :customers, dependent: :destroy
+  has_many :customers, through: :cart_items, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
   belongs_to :genre
 
   has_one_attached :image
@@ -14,6 +15,10 @@ class Item < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [300, 400]).processed
+  end
+  
+  def tax_price
+    price*1.1
   end
 
 validates :image, presence: true

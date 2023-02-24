@@ -39,9 +39,9 @@
   	 	<% @addresses.each do |address| %>
   <tr>
       <td><%= address.post_code %> </td>
-      <td><%#= address.address %>2</td>
-      <td><%#= address.name %>3</td>
-      <td><%#= link_to "編集する", edit_address_path(address.id) ,class: 'btn btn-success w-20'%></td>
+      <td><%= address.address %>2</td>
+      <td><%= address.name %>3</td>
+      <td><%= link_to "編集する", edit_address_path(address.id) ,class: 'btn btn-success w-20'%></td>
     </tr>
   <%end%>
   </tbody>

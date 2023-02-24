@@ -1,3 +1,31 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
-<%= flash[:notice] %>
+<div class="container">
+	<div class="row">
+
+<div class="container center-block w-50 border border-dark" style="margin-top:150px">
+<p>ようこそ、ながのCAKEへ！<br>
+このサイトは、ケーキ販売のECサイトになります。<br>
+会員ではない方も商品の閲覧はできますが、<br>
+購入には会員登録が必要になります。</p>
+</div>
+
+<div class="container">
+	<div class="row">
+<div class="col-10">
+<b>新着商品</b>
+<tr>
+  <% @items.each do |item| %>
+  <td>
+    <%= item.image %>
+    <%= item.name %><br>
+    <%= item.price%></td>
+  </td>
+  <% end %>
+</tr>
+</div>
+
+<p><%=link_to "すべての商品を見る" %></p>
+</div>
+</div>
+
+</div>
+</div>

@@ -2,8 +2,13 @@
 
 class Admin::OrdersController < ApplicationController
   def show
-     @order = Order.find(params[:id])
+    @order = Order.find(params[:id])
     @order_details = @order.order_details
+    
+      # 下記３行は商品合計を出すため
+    @sum = 0
+    @subtotals = @order_details.map { |product_order| product_order.once_price * product_order.quantity }
+    @sum = @subtotals.sum
   end
 
   def update

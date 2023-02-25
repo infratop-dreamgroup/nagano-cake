@@ -1,31 +1,32 @@
 <div class="container pt-5">
-  
+
   <div class="row">
       <h2 class="font-weight-bold">商品一覧<span class="ml-3" style="font-size:0.7em;">(全<%= @items.count %>件)</span></h2>
   </div>
-  
+
   <div class="row mt-4">
-          <% @items.each do |item| %>
-          <table class="col-3">
+    <% @items.each do |item| %>
+      <% if item.is_active == true %>
+        <table class="col-3">
           <tr >
           <td>
             <%= link_to item_path(item) do %>
               <%= image_tag item.image, size: "260x200" %>
             <% end %>
           </td>
-        </tr>
-        <tr>
-          <td>
-            <%= item.name %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            ￥<%= (item.price*1.1).floor.to_s(:delimited) %>
-          </td>
           </tr>
-          </table>
-          <% end %>
-    
+          <tr>
+            <td>
+              <%= item.name %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              ￥<%= (item.price*1.1).floor.to_s(:delimited) %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    <% end %>
   </div>
 </div>

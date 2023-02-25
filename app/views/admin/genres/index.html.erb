@@ -6,9 +6,11 @@
 
 <div class="container">
   <div class="row">
-<div class="ml-5 w-25"><b>ジャンル名</b> <%= form_with model: @genre , url: '/admin/genres', method: :post do |f| %></div>
-<%= f.text_field :name , placeholder:"ジャンル名" %>
+<div class="ml-5"> <%= form_with model: @genre , url: '/admin/genres' ,method: :post , class: "form-inline" do |f| %>
+<b>ジャンル名  </b>
+<div class="form-group"><%= f.text_field :name , placeholder:"ジャンル名" %></div>
 <%= f.submit '新規登録' , class: 'ml-5 btn btn-success w-20' %>
+
 <% end %></div>
 </div></div>
 

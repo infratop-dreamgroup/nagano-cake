@@ -1,8 +1,9 @@
 class Public::AddressesController < ApplicationController
+  
   def index
 
     @address = Address.new
-    @addresses= Address.all
+    @addresses= current_customer.addresses
   end
 
   def edit
@@ -15,7 +16,7 @@ class Public::AddressesController < ApplicationController
      @address.save
      flash[:success] = '配送先を登録しました'
      redirect_to "/addresses"
-   else
+    else
      flash[:danger] ='必要情報を入力してください／ハイフンは使用できません'
      redirect_to "/addresses"
   end

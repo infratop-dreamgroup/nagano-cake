@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row my-4">
     <div class="col-11">
-    <h1>商品一覧</h1>
+    <h2 class-"font-weight-bold">商品一覧</h2>
     </div>
     <div class="col-1">
-    <%= link_to "+",new_admin_item_path,class: "btn btn-outline-secondary mt-2" %><!--商品新規登録ページへのボタン-->
+    <%= link_to "+",new_admin_item_path,class: "btn btn-secondary rounded-circle p-0 mt-2",style: "font-size:20px;width:2rem;height:2rem;" %><!--商品新規登録ページへのボタン-->
     </div>
   </div>
 
   <div class="row">
-    <table class='table'>
-      <thead>
+    <table class='table table-hover'>
+      <thead class="thead-light">
         <tr>
           <th>商品ID</th>
           <th>商品名</th>
@@ -19,23 +19,24 @@
           <th>ステータス</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-borderless">
         <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
           <td><%= link_to item.name, admin_item_path(item.id) %></td>
-          <td><%= item.price %></td>
+          <td><%= item.price.floor.to_s(:delimited) %></td>
           <td><%= item.genre.name %></td>
-          <td>
+          <td class="font-weight-bold">
             <% if item.is_active == true %>
-                販売中
+                <p class="text-success">販売中</p>
               <% else %>
-                販売停止中
+                <p class="text-muted">販売停止中</p>
             <% end %>
           </td>
         </tr>
         <% end %>
       </tbody>
     </table>
+    <%= paginate @items %>
   </div>
 </div>

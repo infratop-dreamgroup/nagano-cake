@@ -1,5 +1,5 @@
 <div class="container mt-5">
-<h1>商品詳細</h1>
+<h2>商品詳細</h2>
 
   <div class="row">
     <div class="col-5 mt-3">
@@ -25,7 +25,7 @@
 
       <div style="pb-5">
         <p>販売ステータス
-          <span class="ml-2"><% if @item.is_active == true %>
+          <span class="ml-2 font-weight-bold text-success"><% if @item.is_active == true %>
               販売中
             <% else %>
               販売停止中

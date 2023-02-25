@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row my-4">
     <div class="col-11">
-    <h1>商品一覧</h1>
+    <h2>商品一覧</h2>
     </div>
     <div class="col-1">
     <%= link_to "+",new_admin_item_path,class: "btn btn-outline-secondary mt-2" %><!--商品新規登録ページへのボタン-->
@@ -10,7 +10,7 @@
 
   <div class="row">
     <table class='table'>
-      <thead>
+      <thead class="thead-light">
         <tr>
           <th>商品ID</th>
           <th>商品名</th>
@@ -19,12 +19,12 @@
           <th>ステータス</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-borderless">
         <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
           <td><%= link_to item.name, admin_item_path(item.id) %></td>
-          <td><%= item.price %></td>
+          <td><%= item.price.floor.to_s(:delimited) %></td>
           <td><%= item.genre.name %></td>
           <td>
             <% if item.is_active == true %>
@@ -37,5 +37,6 @@
         <% end %>
       </tbody>
     </table>
+    <%= paginate @items %>
   </div>
 </div>

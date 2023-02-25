@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-	  
+
  <h5 class=" col-sm-2 col-lg-2.5 m-5 text-center", style="background-color:#e0e0e0">
   注文履歴詳細
  </h5>
@@ -37,7 +37,7 @@
    <th>注文ステータス</th>
    <td>
     <%= form_with model:@order, url: admin_order_path, local: true do |f| %>
-    <%= f.select :status, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"] %>
+    <%= f.select :order_status, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"] %>
     <%= f.submit "更新", class: "btn btn-success" %>
     <% end %>
    </td>
@@ -46,7 +46,7 @@
 </div>
 
 <div class="w-75 m-5">
-    <table class="table">
+    <table class="table" ,style="align-left">
       <thead class="thead-light">
         <tr>
           <th scope="col" style="width: 30%">商品名</th>
@@ -66,7 +66,7 @@
            <%= ((order_detail.item.price * order_detail.quantity*1.1).floor).to_s(:delimited) %></td>
           <td>
             <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), local: true do |f| %>
-              <%= f.select :make_status, ["製作不可", "製作待ち", "製作中", "製作完了"] %>
+              <%= f.select :production_status, ["着手不可", "製作待ち", "製作中", "製作完了"] %>
               <%= f.submit "更新", class: "btn btn-success" %>
             <% end %>
           </td>
@@ -77,27 +77,20 @@
     </div>
 
      <div class="mt-5">
-      <p>
-        <strong class="col-xs-3">商品合計</strong>
-        ¥<%#= (@order.billing_amount - @order.postage).to_s(:delimited)%>
-        <% @sum %>
-        
-      </p>
-     <br>
-    
-
-    <div>
-      <p>
-        <strong class="col-xs-2">送料</strong>
-        <% @order.postage = 800 %>
-        ¥<%= @order.postage %>
-      </p>
-    </div><br>
-
-    <div>
-      <p>
-        <strong class="col-xs-4">請求金額合計</strong>
-        ¥<%= @order.billing_amount %>
-        </p>
+       <table>
+        <tr>
+          <th>商品合計</th>
+          <td><%= (@order.billing_amount - @order.postage).to_s(:delimited)%>円</td>
+        </tr>
+        <tr>
+         <th>送料</th>
+         <td><span class: "justify-content-end"><% @order.postage = 800 %>
+         <%= @order.postage %>円</td>
+        </tr>
+         <tr>
+           <th>請求金額合</th>
+           <td><%= @order.billing_amount %>円</td>
+         </tr>
+        </table>
     </div>
   </div>

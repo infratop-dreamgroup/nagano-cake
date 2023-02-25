@@ -8,4 +8,8 @@ class Order < ApplicationRecord
   }
   enum pay_type: { credit_card: 0, transfer: 1 }
 
+private
+  def order_params
+    params.require(:order_detail).permit(:order_status , :production_status)
+  end
 end

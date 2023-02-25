@@ -1,19 +1,18 @@
 <div class="container pt-5">
+
   <div class="row">
-    <div class="col-4">
-    </div>
+      <h2 class="font-weight-bold">商品一覧<span class="ml-3" style="font-size:0.7em;">(全<%= @items.count %>件)</span></h2>
+  </div>
 
-    <div class="col-8">
-      <h2>商品一覧<span class="ml-3">全<%= @items.count %>件</span></h2>
-      <table>
-
-          <% @items.each do |item| %>
-          <tr>
-          <td>
-            <%= link_to item_path(item) do %>
-              <%= image_tag item.image, size: "250x200" %>
-            <% end %>
-          </td>
+  <div class="row mt-4">
+    <% @items.each do |item| %>
+      <table class="col-3 font-weight-bold">
+        <tr>
+        <td>
+          <%= link_to item_path(item) do %>
+            <%= image_tag item.image, size: "260x200" %>
+          <% end %>
+        </td>
         </tr>
         <tr>
           <td>
@@ -24,14 +23,18 @@
           <td>
             ￥<%= (item.price*1.1).floor.to_s(:delimited) %>
           </td>
-          </tr>
+        </tr>
+        <tr>
+          <td>
+          <% if item.is_active == false %>
+            <p>※売切れ</p>
+          <% else %>
+            <p>   </p>
           <% end %>
-
-    </table>
-
-
-
-
-    </div>
+        </td>
+        </tr>
+      </table>
+    <% end %>
+    <%= paginate @items %>
   </div>
 </div>

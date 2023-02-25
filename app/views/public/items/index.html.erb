@@ -6,27 +6,34 @@
 
   <div class="row mt-4">
     <% @items.each do |item| %>
-      <% if item.is_active == true %>
-        <table class="col-3">
-          <tr >
+      <table class="col-3 font-weight-bold">
+        <tr>
+        <td>
+          <%= link_to item_path(item) do %>
+            <%= image_tag item.image, size: "260x200" %>
+          <% end %>
+        </td>
+        </tr>
+        <tr>
           <td>
-            <%= link_to item_path(item) do %>
-              <%= image_tag item.image, size: "260x200" %>
-            <% end %>
+            <%= item.name %>
           </td>
-          </tr>
-          <tr>
-            <td>
-              <%= item.name %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              ￥<%= (item.price*1.1).floor.to_s(:delimited) %>
-            </td>
-          </tr>
-        </table>
-      <% end %>
+        </tr>
+        <tr>
+          <td>
+            ￥<%= (item.price*1.1).floor.to_s(:delimited) %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <% if item.is_active == false %>
+            <p>※売切れ</p>
+          <% else %>
+            <p>   </p>
+          <% end %>
+        </td>
+        </tr>
+      </table>
     <% end %>
     <%= paginate @items %>
   </div>

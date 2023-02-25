@@ -20,7 +20,7 @@
 
       <div class="ml-5 mt-4">
       <%= form_with model: @cart_item do |f| %>
-          <% if customer_signed_in? %>
+          <% if customer_signed_in? && @item.is_active == true %>
         <%= f.select :quantity, *[1..10] %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.submit 'カートに入れる',class:"btn btn-success ml-3"%>

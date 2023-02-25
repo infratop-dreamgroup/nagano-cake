@@ -26,7 +26,7 @@ class Public::AddressesController < ApplicationController
     @address = Address.find(params[:id])
     if @address.update(address_params)
        flash[:notice] = "Shipcity was successfully updated"
-    redirect_to addresses_path 
+    redirect_to addresses_path
     else
      render "edit"
     end

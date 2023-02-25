@@ -1,12 +1,29 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
+
   def show
-     @orders = Order.all
-     # @order= Order.find(params[:id])
-     # @ordered_items = @order.ordered_items
-     @customer = Customer.order_details
+       @order = Order.find(params[:id])
+       @order_details = @order.order_details
+       #@sum = @order.all.sum(:price)
+
   end
 
   def update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    @order_details = @order.order_details
+
+    if @order.order_status == "入金確認"
+       @order_details.each do |order_detail|
+        order_detail.production_status =1
+        order_detail.save
+        end
+      end
+    redirect_to admin_order_path
   end
 
+  private
+  def order_params
+    params.require(:order).permit(:order_status)
+  end
 end

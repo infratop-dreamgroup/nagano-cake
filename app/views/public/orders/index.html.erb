@@ -22,7 +22,8 @@
               <%= order.address %><br>
               <%= order.name %> </td>
             <td><% order.order_details.each do |order_item| %>
-            <%= order_item.item.name %><br>
+
+            <%= order_item.item.name %>/
             <% end %>
             </td>
             <td><%= order.billing_amount %>円</td>

@@ -82,7 +82,12 @@
     $ bundle install
     $ rails webpacker:install
     $ rails webpacker:compile
-    
+
+### 管理者情報
+#### メールアドレス：test@test.com
+#### パスワード：abc123
+
+
 # 開発メンバー
 ### 岡本 宇弘
 ### 鈴木 彩永

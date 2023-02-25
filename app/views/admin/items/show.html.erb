@@ -8,34 +8,34 @@
 
     <div class="col-7 mt-3">
       <div style="pb-5">
-        <p>商 品 名 <span class="ml-5"><%= @item.name%></span></p>
+        <p style="font-size:1.1em;">商 品 名 <span class="ml-5" style="font-size:1.2em;"><%= @item.name%></span></p>
       </div>
 
       <div style="pb-5">
-        <p>商品説明<span class="ml-5"><%= @item.introduction %></span></p>
+        <p style="font-size:1.1em;">商品説明<span class="ml-5" style="font-size:1.2em;"><%= @item.introduction %></span></p>
       </div>
 
       <div style="pb-5">
-        <p>ジャンル<span class="ml-5"><%= @item.genre.name %></span></p>
+        <p style="font-size:1.1em;">ジャンル<span class="ml-5" style="font-size:1.2em;"><%= @item.genre.name %></span></p>
       </div>
 
       <div style="pb-5">
-        <p>税込価格<br>(税抜価格)<span class="ml-5"><%= (@item.price*1.1).floor.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</span></p>
+        <p style="font-size:1.1em;">税込価格<br>(税抜価格)<span class="ml-5" style="font-size:1.2em;"><%= (@item.price*1.1).floor.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</span></p>
       </div>
 
       <div style="pb-5">
-        <p>販売ステータス
-          <span class="ml-2 font-weight-bold text-success"><% if @item.is_active == true %>
-              販売中
+        <p style="font-size:1.0em;">販売ステータス
+          <span class="ml-2 font-weight-bold"><% if @item.is_active == true %>
+              <span class="text-success" style="font-size:1.2em;">販売中</span>
             <% else %>
-              販売停止中
+              <span class="text-muted" style="font-size:1.2em;">販売停止中</span>
           <% end %>
           </span>
         </p>
       </div>
 
-      <div class="ml-5 mt-4">
-      <%= link_to "編集する", edit_admin_item_path(@item),class:"btn btn-success mx-auto" %>
+      <div class="ml-5 mt-5">
+      <%= link_to "編集する", edit_admin_item_path(@item),class:"btn btn-success px-4 py-2",style:"font-size:1.2em;" %>
       </div>
 
     </div>

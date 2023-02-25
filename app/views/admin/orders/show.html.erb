@@ -30,7 +30,7 @@
 
   <tr>
    <th>支払方法</th>
-   <td><%= @order.pay_type %></td>
+   <td><%= @order.pay_type_i18n %></td>
   </tr>
 
   <tr>
@@ -45,9 +45,9 @@
   </table>
 </div>
 
-<div class="w-75">
+<div class="w-75 m-5">
     <table class="table">
-      <thead style="background-color:#e0e0e0">
+      <thead class="thead-light">
         <tr>
           <th scope="col" style="width: 30%">商品名</th>
           <th scope="col" style="width: 20%">単価（税込）</th>
@@ -76,13 +76,14 @@
     </table>
     </div>
 
-  <div class="col-xs-4 ml-5">
-    <div>
+     <div class="mt-5">
       <p>
         <strong class="col-xs-3">商品合計</strong>
-        ¥<%= (@order.billing_amount - @order.postage).to_s(:delimited)%>
+        ¥<%#= (@order.billing_amount - @order.postage).to_s(:delimited)%>
+        <% @sum %>
+        
       </p>
-    </div><br>
+     <br>
     
 
     <div>
@@ -99,5 +100,4 @@
         ¥<%= @order.billing_amount %>
         </p>
     </div>
-    <br>
   </div>
